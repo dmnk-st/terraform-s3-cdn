@@ -1,4 +1,4 @@
-// Region
+// AWS Region
 variable "region" {
     default = "us-east-1"
 }
@@ -6,15 +6,15 @@ variable "region" {
 variable "aws_profile" {
     default = "your-aws-profile-name"
 }
-// Your domain name goes here
+// Replace with your domain name
 variable "website_name" {
     default = "your-domain-name"
 }
-// Your index.html file
+// Your index.html file. Keep the file in the root directory
 variable "index_file" {
     default = "index.html"
 }
-// Your photo file
+// Your photo file. Keep the file in the root directory
 variable "photo_file" {
     default = "pic.jpg"
 }

@@ -3,11 +3,12 @@ provider "aws" {
     profile = "${var.aws_profile}"
   
 }
+// S3 bucket for the logs
 resource "aws_s3_bucket" "site-logs" {
   bucket = "${var.website_name}-site-logs"
   acl = "log-delivery-write"
 }
-
+// S3 bucket for the website content
 resource "aws_s3_bucket" "site-bucket" {
   bucket = "www.${var.website_name}"
 
@@ -21,15 +22,16 @@ resource "aws_s3_bucket" "site-bucket" {
   }
 
 }
-resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
-  comment = "cloudfront origin access identity"
-}
-
+// Existing certificate created before running the deployment
 data "aws_acm_certificate" "cert" {
   domain   = "${var.website_name}"
   statuses = ["ISSUED"]
 }
-
+// Cloudfront origin
+resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
+  comment = "cloudfront origin access identity"
+}
+// Cloudfront distribution
 resource "aws_cloudfront_distribution" "website_cdn" {
   enabled      = true
   price_class  = "PriceClass_200"

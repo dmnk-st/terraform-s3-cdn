@@ -1,5 +1,5 @@
 
-//Website content file 
+// Website content file 
 resource "aws_s3_bucket_object" "content" {
   bucket = aws_s3_bucket.site-bucket.bucket
   key    = "${var.index_file}"
@@ -9,7 +9,7 @@ resource "aws_s3_bucket_object" "content" {
   etag = "${filemd5("${var.index_file}")}"
   content_type = "text/html"
 }
-//Website photo file
+// Website photo file
 resource "aws_s3_bucket_object" "photo" {
   bucket = aws_s3_bucket.site-bucket.bucket
   key    = "${var.photo_file}"
