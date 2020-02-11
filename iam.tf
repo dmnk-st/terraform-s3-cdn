@@ -20,7 +20,6 @@ data "aws_iam_policy_document" "s3_policy" {
     }
   }
 }
-
 resource "aws_s3_bucket_policy" "example" {
   bucket = "${aws_s3_bucket.site-bucket.id}"
   policy = "${data.aws_iam_policy_document.s3_policy.json}"
